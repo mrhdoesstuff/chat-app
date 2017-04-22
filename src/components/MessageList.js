@@ -3,8 +3,9 @@ import Message from './Message';
 
 class MessageList extends Component {
 	componentDidUpdate() {
-		const objDiv = document.getElementsByClassName('messages');
-		objDiv.scrollTop = objDiv.scrollHeight;	
+		// There is a new message in the state, scroll to bottom of list
+		const objDiv = document.getElementById('messageList');
+		objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;	
 	}
 
 	render() {
@@ -21,7 +22,7 @@ class MessageList extends Component {
 		});
 
 		return (
-			<div className="messages">
+			<div className="messages" id="messageList">
 				{messages}
 			</div>
 		);
