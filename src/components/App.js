@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ChatApp from './ChatApp';
 
+require('../styles/App.css');
+require('../styles/Login.css');
+
 class App extends Component {
   constructor(props) {
     super(props);
