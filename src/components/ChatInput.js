@@ -29,6 +29,7 @@ class ChatInput extends Component {
 						placeholder="Write a message..."
 						required
 					/>
+					<button onChange={this.textChangeHandler}>Send</button>
 				</form>
 		);
 	}

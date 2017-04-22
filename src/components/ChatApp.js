@@ -26,7 +26,6 @@ class ChatApp extends Component {
 			username: this.props.username,
 			message
 		};
-		console.log(this.props);
 		//emit the message to the server
 		this.socket.emit('client:message', messageObject);
 
