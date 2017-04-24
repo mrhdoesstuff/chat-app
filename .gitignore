@@ -1,3 +1,8 @@
+# Local development
+*.env
+*.dev
+.DS_Store
+
 # Logs
 logs
 *.log
