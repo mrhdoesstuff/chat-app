@@ -1,25 +1,33 @@
-var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var http = require('http');
+var express = require('express');
+var socket = require('socket.io');
+var cors = require('cors');
 var path = require('path');
-var port = process.env.PORT || 8080;
 
-const express = require('express');
+const port = process.env.PORT || 8080;
+
+const app = express();
+const server = http.Server(app);
+const io = socket(server);
+
+app.use(cors());
 
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(path.resolve('public/index.html'));
 });
 
 io.on('connection', socket => {
 	const username = socket.handshake.query.username;
 	console.log(`${username} connected`);
 
-	socket.on('client:message', data => {
+	socket.on('client message', data => {
 		console.log(`${data.username}: ${data.message}`);
 
-		socket.broadcast.emit('server:message', data);
+	io.emit('server message', data);
+	// socket.broadcast.emit('server message', data);
+
 	});
 
 	socket.on('disconnect', () => {

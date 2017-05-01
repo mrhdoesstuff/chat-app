@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import SocketIOClient from 'socket.io-client';
+import io from 'socket.io-client';
 import ChatInput from './ChatInput';
 import MessageList from './MessageList';
 
+let socket = io();
 
 class ChatApp extends Component {
-	socket = {};
 	constructor(props) {
 		super(props);
 		this.state = {messages: []};
@@ -13,11 +13,12 @@ class ChatApp extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 
 		//connect to the server
-		this.socket = SocketIOClient('http://localhost:8080', {query: `username=${props.username}`}).connect();
+		// socket = io.connect('http://localhost:8080', {query: `username=${props.username}`});
 
 		//listen for messages from the server
-		this.socket.on('server: message', message => {
+		socket.on('server message', message => {
 			this.addMessage(message);
+
 		});	
 	}
 
@@ -27,10 +28,10 @@ class ChatApp extends Component {
 			message
 		};
 		//emit the message to the server
-		this.socket.emit('client:message', messageObject);
+		socket.emit('client message', messageObject);
 
 		messageObject.fromMe = true;
-		this.addMessage(messageObject);
+		// this.addMessage(messageObject);
 	}
 
 	addMessage(message) {
