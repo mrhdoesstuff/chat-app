@@ -102,37 +102,41 @@ h3 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.message.from-me .username {
-    display: none;
-}
-
-.message.from-me {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 5px;
-}
-
-.message.from-me .message-body {
-    background-color: #af9570;
-    color: white;
-}
-
-.message {
+.message-container {
     margin-bottom: 20px;
-}
-.message-body {
-    max-width: 80%;
-    display: inline-block;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px;
-    border-radius: 5px;
-    padding-right: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .username {
+    margin-bottom: 5px;
     font-weight: bold;
     font-size: 0.9rem;
     color: #999;
-    margin-bottom: 5px;
+    flex: 1 1;
+}
+
+.message-body {
+    padding: 20px 40px 20px 20px;
+    background-color: #fff;
+    border: 1px;
+    border-radius: 5px;
+    flex: 1 1;
+}
+
+.message-container.from-me {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.username.from-me {
+    flex: 1 1;
+}
+
+.message-body.from-me {
+    padding: 20px 20px 20px 40px;
+    flex: 1 1;
 }

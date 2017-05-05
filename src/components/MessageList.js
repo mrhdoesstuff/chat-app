@@ -16,7 +16,7 @@ class MessageList extends Component {
 					username={message.username}
 					message={message.message}
 					// if the isFromMessage is true, message from me 
-					isFromMessage={message.fromMe} 
+					fromMe={message.fromMe} 
 				/>
 			);
 		});

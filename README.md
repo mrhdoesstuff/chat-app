@@ -1,3 +1,11 @@
-﻿Deploy on heroku
+﻿###Deploy to heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Rfirsov/chat-app)
+https://chat-reactapp.herokuapp.com/
+
+
+Start dev server from console if we run locally:
+
+
+```
+npm start
+```

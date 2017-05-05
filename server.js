@@ -19,19 +19,17 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', socket => {
-	const username = socket.handshake.query.username;
-	console.log(`${username} connected`);
+	// const username = socket.handshake.query.username;
+	// console.log(`${username} connected`);
 
 	socket.on('client message', data => {
-		console.log(`${data.username}: ${data.message}`);
+		// console.log(`${data.username}: ${data.message}`);
 
 	io.emit('server message', data);
-	// socket.broadcast.emit('server message', data);
-
+	
 	});
 
 	socket.on('disconnect', () => {
-		console.log(`${username} disconnected`);
   });
 });
 

@@ -8,7 +8,7 @@ let socket = io();
 class ChatApp extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {messages: []};
+		this.state = { messages: [] };
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -25,11 +25,11 @@ class ChatApp extends Component {
 	handleSubmit(message) {
 		const messageObject = {
 			username: this.props.username,
-			message
+			message: message
 		};
+
 		//emit the message to the server
 		socket.emit('client message', messageObject);
-
 		messageObject.fromMe = true;
 		// this.addMessage(messageObject);
 	}

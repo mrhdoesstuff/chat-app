@@ -13551,9 +13551,9 @@ var ChatApp = function (_Component) {
 				username: this.props.username,
 				message: message
 			};
+
 			//emit the message to the server
 			socket.emit('client message', messageObject);
-
 			messageObject.fromMe = true;
 			// this.addMessage(messageObject);
 		}
@@ -13706,15 +13706,15 @@ var Message = function (_Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'message ' + fromMe },
+				{ className: 'message-container ' + fromMe },
 				_react2.default.createElement(
 					'div',
-					{ className: 'username' },
+					{ className: 'username ' + fromMe },
 					this.props.username
 				),
 				_react2.default.createElement(
 					'div',
-					{ className: 'message-body' },
+					{ className: 'message-body ' + fromMe },
 					this.props.message
 				)
 			);
@@ -13780,7 +13780,7 @@ var MessageList = function (_Component) {
 					username: message.username,
 					message: message.message
 					// if the isFromMessage is true, message from me 
-					, isFromMessage: message.fromMe
+					, fromMe: message.fromMe
 				});
 			});
 
